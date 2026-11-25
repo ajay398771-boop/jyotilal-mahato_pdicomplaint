@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PDI Complaint Report – Tata Motors</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--tx:#1b2430;--mu:#667085;--bd:#d6dbe4;--ac:#1d4ed8;--act:#fff;--hd:#eef1f7;--r:#fee4e2;--rt:#b42318;--o:#ffead5;--ot:#b54708;--y:#fef7c3;--yt:#854a0e;--g:#d1fadf;--gt:#067647;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f141b;--card:#18202b;--tx:#e6eaf0;--mu:#98a2b3;--bd:#2d3848;--ac:#6b9bff;--act:#0b1220;--hd:#212c3a;--r:#4a1d1a;--rt:#fda29b;--o:#4a2a10;--ot:#fdb022;--y:#3d3410;--yt:#fde272;--g:#0f3a25;--gt:#6ce9a6}}
+:root[data-theme="dark"]{--bg:#0f141b;--card:#18202b;--tx:#e6eaf0;--mu:#98a2b3;--bd:#2d3848;--ac:#6b9bff;--act:#0b1220;--hd:#212c3a;--r:#4a1d1a;--rt:#fda29b;--o:#4a2a10;--ot:#fdb022;--y:#3d3410;--yt:#fde272;--g:#0f3a25;--gt:#6ce9a6}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{padding:16px 20px 0;max-width:1800px;margin:auto}
+h1{font-size:20px;margin:0}header p{margin:2px 0 12px;color:var(--mu);font-size:13px}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--bd)}
+.tab{background:none;border:0;padding:10px 16px;font:inherit;font-weight:600;color:var(--mu);cursor:pointer;border-bottom:3px solid transparent}
+.tab.on{color:var(--ac);border-color:var(--ac)}
+.badge{background:var(--hd);border-radius:10px;padding:1px 8px;font-size:12px;margin-left:6px;color:var(--tx)}
+main{max-width:1800px;margin:auto;padding:16px 20px 40px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.c3{grid-column:span 3}.c4{grid-column:span 4}.c6{grid-column:span 6}.c12{grid-column:span 12}
+@media(max-width:900px){.c3,.c4,.c6{grid-column:span 6}}@media(max-width:560px){.c3,.c4,.c6{grid-column:span 12}}
+label{display:block;font-size:12px;font-weight:600;color:var(--mu);margin-bottom:4px}
+label i{color:var(--rt);font-style:normal}
+input,select,textarea{width:100%;font:inherit;color:var(--tx);background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:7px 9px}
+textarea{resize:vertical;min-height:62px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:-1px}
+input[readonly]{background:var(--hd);font-weight:700}
+.btn{background:var(--ac);color:var(--act);border:0;border-radius:6px;padding:9px 18px;font:inherit;font-weight:600;cursor:pointer}
+.btn.s{background:var(--hd);color:var(--tx);border:1px solid var(--bd)}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}
+.chtbl{border:1px solid var(--bd);border-radius:6px;max-height:150px;overflow:auto;background:var(--card)}
+.chtbl table{width:100%;border-collapse:collapse}.chtbl td,.chtbl th{padding:3px 8px;border-bottom:1px solid var(--bd);text-align:left;font-size:12.5px}
+.chtbl th{background:var(--hd);position:sticky;top:0}.chtbl .em{color:var(--mu);padding:10px;text-align:center}
+.ph{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.th{position:relative}.th img{width:56px;height:56px;object-fit:cover;border-radius:6px;border:1px solid var(--bd);cursor:zoom-in;display:block}
+.th b{position:absolute;top:-6px;right:-6px;background:var(--rt);color:#fff;width:18px;height:18px;border-radius:9px;text-align:center;line-height:17px;font-size:12px;cursor:pointer}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:end;margin-bottom:10px}
+.bar>div{min-width:130px;flex:1}.bar .q{flex:2;min-width:220px}
+.meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;color:var(--mu);font-size:13px}
+.wrap{overflow:auto;max-height:72vh;border:1px solid var(--bd);border-radius:10px;background:var(--card)}
+table.t{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}
+.t th{position:sticky;top:0;background:var(--hd);padding:8px;font-size:12px;text-align:left;border-bottom:1px solid var(--bd);white-space:nowrap;z-index:1}
+.t th.sort{cursor:pointer;color:var(--ac)}
+.t td{padding:5px;border-bottom:1px solid var(--bd);vertical-align:top}
+.t td input,.t td select,.t td textarea{padding:5px 6px;font-size:13px;min-height:0;border-color:transparent;background:transparent}
+.t td input:hover,.t td select:hover,.t td textarea:hover{border-color:var(--bd)}
+.t td textarea{min-height:56px}
+.t td.qty{text-align:center;font-weight:700;font-size:16px;padding-top:12px}
+.sev-C{background:var(--r)!important;color:var(--rt)}.sev-H{background:var(--o)!important;color:var(--ot)}.sev-M{background:var(--y)!important;color:var(--yt)}.sev-L{background:var(--g)!important;color:var(--gt)}
+.od{color:var(--rt)!important;font-weight:700}
+.del{background:none;border:0;color:var(--rt);cursor:pointer;font-size:18px}
+.empty{padding:40px;text-align:center;color:var(--mu)}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}
+#lb img{max-width:94%;max-height:92%}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:8px;display:none;z-index:60;max-width:90%}
+.hide{display:none}
+#banner{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:10px;margin-bottom:12px;background:var(--card) center/cover;border:1px solid var(--bd);min-height:84px}
+#banner p{margin:2px 0 0}#banner.bg{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}#banner.bg p{color:#eee}
+#logo{max-height:64px;max-width:200px;object-fit:contain}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:70}.modal.hide{display:none}.modal .card{width:min(360px,92%)}
+.t.ro select:disabled,.t.ro input:disabled{opacity:1;-webkit-text-fill-color:currentColor;color:inherit}
+.t.ro .del{opacity:.55}
+.pz{border:2px dashed var(--bd);border-radius:8px;padding:10px;text-align:center;color:var(--mu);margin-top:6px;cursor:pointer;font-size:13px}.pz:focus{outline:2px solid var(--ac);border-color:var(--ac)}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.kc{background:var(--card);border:1px solid var(--bd);border-left:5px solid var(--ac);border-radius:10px;padding:12px}.kc b{display:block;font-size:26px}.kc span{color:var(--mu);font-size:12px}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr));gap:12px}.ag .wide{grid-column:1/-1}.ag h3{margin:0 0 10px;font-size:14px}
+.dn{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.lg{list-style:none;margin:0;padding:0;font-size:13px}.lg li{margin:3px 0}.lg i,.sl i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px}
+.hb{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12.5px}.hl{flex:0 0 130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ht{flex:1;display:flex;height:16px;background:var(--hd);border-radius:4px;overflow:hidden}.ht span{display:block;height:100%}
+.cl{display:flex;align-items:flex-end;gap:6px;overflow-x:auto;padding-bottom:4px;min-height:180px}.cc{display:flex;flex-direction:column;align-items:center;min-width:36px;font-size:11px}.cs{width:24px;display:flex;flex-direction:column-reverse;border-radius:3px;overflow:hidden}.cs span{display:block}.cc em{font-style:normal;color:var(--mu);white-space:nowrap}
+.chip{display:inline-block;background:var(--hd);border:1px solid var(--bd);border-radius:14px;padding:2px 10px;font-size:12.5px}.chip b{cursor:pointer;color:var(--rt);margin-left:6px}
+.mt{width:100%;border-collapse:collapse;font-size:12.5px}.mt td,.mt th{padding:5px 6px;border-bottom:1px solid var(--bd);text-align:left}.mt th{background:var(--hd)}
+@media print{.tabs,.noprint,#toast{display:none!important}body{background:#fff}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+.sec{margin:20px 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mu);border-bottom:1px solid var(--bd);padding-bottom:4px}.sec:first-child{margin-top:0}
+.addrow{display:flex;gap:6px;align-items:flex-start}.addrow textarea{min-height:40px}.addrow+.chtbl{margin-top:6px}
+.pz{caret-color:transparent;min-height:40px;display:flex;align-items:center;justify-content:center;margin-top:0;user-select:none}.pz.mini{min-height:0;padding:4px 6px;font-size:11px;margin-top:4px;display:block}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.gc{position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--bd);aspect-ratio:4/3;background:var(--hd);cursor:zoom-in}.gc img{width:100%;height:100%;object-fit:cover;display:block}
+.gc .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 10px 8px;background:linear-gradient(transparent,rgba(0,0,0,.8));color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}.gc .cap b{display:block;font-size:14px;line-height:1.25}.gc .cap span{font-size:12px;opacity:.9}
+.gc .rk{position:absolute;top:8px;left:8px;background:var(--ac);color:var(--act);border-radius:12px;padding:1px 9px;font-weight:700;font-size:12px}.gc .ct{position:absolute;top:8px;right:8px;background:#d92d20;color:#fff;border-radius:12px;padding:1px 9px;font-weight:700;font-size:12px}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+<header><div id="banner"><img id="logo" class="hide" alt="Logo"><div>
+  <h1>🚚 Tata Motors – PDI Complaint Report</h1>
+  <p>Pre-Delivery Inspection · daily complaint log and status tracker</p>
+  </div></div><div class="tabs">
+    <button class="tab on" data-t="log">1 · Log Complaint</button>
+    <button class="tab" data-t="trk">2 · Track Status<span class="badge" id="cnt">0</span></button>
+    <button class="tab" data-t="ana">3 · Analysis</button>
+    <button class="tab" data-t="mng">⚙ Manage</button>
+  </div>
+</header>
+<main>
+<!-- TAB 1 -->
+<section id="log" class="card">
+  <h3 class="sec">Complaint details</h3>
+  <div class="grid">
+    <div class="c3"><label>Complaint Reported Date <i>*</i></label><input type="date" id="f_date"></div>
+    <div class="c3"><label>PDI Yard</label><select id="f_yard"></select></div>
+    <div class="c3"><label>Island</label><select id="f_island"></select></div>
+    <div class="c3"><label>SEN - SPOC</label><select id="f_spoc"></select></div>
+    <div class="c3"><label>Model <i>*</i></label><select id="f_model"></select></div>
+    <div class="c3"><label>Aggregate / Complaint Parts <i>*</i></label><select id="f_agg"></select></div>
+    <div class="c3"><label>Sub-Aggregate</label><input id="f_sub" list="subList" autocomplete="off"></div>
+    <div class="c3"><label>Complaint Detection Stage <i>*</i></label><select id="f_stage"></select></div>
+    <div class="c6"><label>Complaint in Short <i>*</i></label><input id="f_short"></div>
+    <div class="c3"><label>Severity <i>*</i></label><select id="f_sev"></select></div>
+    <div class="c3"><label>Status <i>*</i></label><select id="f_status"></select></div>
+    <div class="c12"><label>Detailed Observation</label><textarea id="f_detail"></textarea></div>
+  </div>
+  <h3 class="sec">Affected vehicle and parts</h3>
+  <div class="grid">
+    <div class="c4"><label>Affected Chassis <i>*</i></label><input id="f_chi" class="mono" maxlength="17" autocomplete="off" placeholder="MAT…"></div>
+    <div class="c4"><label>Part No.</label><div class="addrow"><textarea id="f_parti" class="mono"></textarea><button class="btn s" id="f_parta">Add</button></div><div class="chtbl" id="tb_part"></div></div>
+    <div class="c4"><label>STO No.</label><div class="addrow"><textarea id="f_stoi" class="mono"></textarea><button class="btn s" id="f_stoa">Add</button></div><div class="chtbl" id="tb_sto"></div></div>
+  </div>
+  <h3 class="sec">Corrective actions and closure</h3>
+  <div class="grid">
+    <div class="c6"><label>Corrective Action Received from QA / Vendor</label><textarea id="f_qa"></textarea></div>
+    <div class="c6"><label>Corrective Action Taken by Field Team in Indonesia</label><textarea id="f_field"></textarea></div>
+    <div class="c3"><label>Target Closure Date</label><input type="date" id="f_target"></div>
+    <div class="c3"><label>Actual Closure Date</label><input type="date" id="f_actual"></div>
+    <div class="c6"><label>Remarks</label><input id="f_rem"></div>
+  </div>
+  <h3 class="sec">Supporting failure / defect photos</h3>
+  <div class="grid">
+    <div class="c4"><label>Upload photos</label><input type="file" id="f_photo" accept="image/*" multiple></div>
+    <div class="c4"><label>Paste photo</label><div class="pz" id="pz" contenteditable="true" spellcheck="false">📋 Click here, then press Ctrl+V (⌘V) or right-click → Paste</div></div>
+    <div class="c4"><label>Added photos</label><div class="ph" id="f_ph" style="margin:0"></div></div>
+  </div>
+  <p style="margin:18px 0 0;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="submit">Submit Complaint</button><button class="btn s" id="reset">Clear form</button></p>
+</section>
+
+<!-- TAB 2 -->
+<section id="trk" class="hide">
+  <div class="card" style="padding:12px;margin-bottom:12px">
+    <div class="bar">
+      <div class="q"><label>Search (failure, chassis, defect, any text)</label><input id="q" type="search" placeholder="Search…"></div>
+      <div><label>PDI Yard</label><select id="fy"></select></div>
+      <div><label>Island</label><select id="fi"></select></div>
+      <div><label>SEN - SPOC</label><select id="fp"></select></div>
+      <div><label>Model</label><select id="fm"></select></div>
+      <div><label>Aggregate</label><select id="fa"></select></div>
+      <div><label>Sub-Aggregate</label><select id="fs"></select></div>
+      <div><label>Detection Stage</label><select id="fg"></select></div>
+      <div><label>Severity</label><select id="fv"></select></div>
+      <div><label>Status</label><select id="ft"></select></div>
+      <div style="flex:0 0 auto;min-width:0"><button class="btn s" id="clr">Clear filters</button></div>
+    </div>
+  </div>
+  <div class="meta"><span id="stats"></span><span><button class="btn s" id="lk"></button> <button class="btn" id="xl">⬇ Export to Excel</button> <button class="btn s" id="copy">Copy table for Excel</button></span></div>
+  <div class="wrap"><table class="t" id="tbl"></table></div>
+  </section>
+
+<!-- TAB 3 -->
+<section id="ana" class="hide">
+  <div class="card noprint" style="padding:12px;margin-bottom:12px"><div class="bar">
+    <div><label>Model</label><select id="am"></select></div><div><label>From date</label><input type="date" id="ad1"></div><div><label>To date</label><input type="date" id="ad2"></div>
+    <div style="flex:0 0 auto;min-width:0"><button class="btn s" id="ax">Reset</button> <button class="btn s" id="gbtn">📷 See the failure photos</button> <button class="btn" id="ap">Print / Save as PDF</button></div></div></div>
+  <h2 style="margin:0 0 2px;font-size:17px">PDI Complaint Analysis</h2><p id="asub" style="margin:0 0 12px;color:var(--mu)"></p>
+  <div class="kp" id="kp"></div><div class="sl" id="sevLg" style="margin-bottom:8px;font-size:12.5px"></div>
+  <div id="gal" class="hide" style="margin-bottom:12px"><div class="card"><h3 style="margin:0 0 10px;font-size:14px">Top 10 failure photos – ranked by number of affected chassis</h3><div class="gal" id="galG"></div></div></div>
+  <div class="ag" id="ag"></div>
+</section>
+
+<!-- MANAGE -->
+<section id="mng" class="hide">
+  <div class="card empty" id="mLock">🔒 Manage settings are password protected.<br><br><button class="btn" id="mUn">Unlock</button></div>
+  <div class="card hide" id="mSet"><div class="grid">
+    <div class="c6"><label>Header background photo</label><input type="file" id="m_bg" accept="image/*"><p><button class="btn s" id="m_bgx">Remove background</button></p></div>
+    <div class="c6"><label>Logo</label><input type="file" id="m_logo" accept="image/*"><p><button class="btn s" id="m_logox">Remove logo</button></p></div>
+    <div class="c12"><h3 style="margin:8px 0 2px;font-size:15px">Data upload</h3><p style="margin:0 0 10px;color:var(--mu);font-size:13px">Upload an Excel (.xlsx) or CSV file in the same column format as the Track Status export. Uploaded complaints appear in the Track Status tab.</p>
+      <div class="bar" style="align-items:center"><div style="flex:2"><input type="file" id="m_up" accept=".xlsx,.xls,.csv"></div><div style="flex:0 0 auto;min-width:0"><button class="btn" id="m_upgo">Upload data</button> <button class="btn s" id="m_tpl">Download template</button></div></div>
+      <label style="display:flex;gap:6px;align-items:center;font-weight:400;margin-top:6px"><input type="checkbox" id="m_rep" style="width:auto"> Replace all existing complaints with the uploaded data</label><div id="m_upmsg" style="margin-top:8px;font-size:13px"></div></div>
+    <div class="c12"><h3 style="margin:8px 0 2px;font-size:15px">Dropdown options</h3><p style="margin:0 0 10px;color:var(--mu);font-size:13px">Add or remove the choices offered in each dropdown. Removing a choice does not change complaints that already use it.</p><div class="ag" id="mOpts"></div><p><button class="btn s" id="m_rst">Reset all dropdowns to defaults</button></p></div>
+    <div class="c12"><span style="color:var(--mu);font-size:13px">Changes appear instantly in the page header above. Use a wide landscape photo for the background; a PNG with a transparent background works best for the logo.</span></div>
+    <div class="c12"><button class="btn" id="m_lock">🔒 Lock Manage and Track Status editing</button></div>
+  </div></div>
+</section>
+</main>
+<datalist id="aggList"></datalist><datalist id="subList"></datalist>
+<div id="pw" class="modal hide"><div class="card"><h3 style="margin:0 0 6px">Admin password</h3><p style="margin:0 0 10px;color:var(--mu);font-size:13px">Enter the password to edit complaints or open Manage settings.</p><input type="password" id="pwi" autocomplete="off"><div id="pwe" style="color:var(--rt);font-size:13px;min-height:20px;margin-top:4px"></div><p style="margin:8px 0 0"><button class="btn" id="pwok">Unlock</button> <button class="btn s" id="pwx">Cancel</button></p></div></div>
+<div id="lb"><img alt=""></div><div id="toast"></div>
+<script>
+const K='pdi_complaints_v1',$=s=>document.querySelector(s);
+/* dropdown lists are defined below */
+const AGG=['Engine','Transmission','Axle','Brakes','Suspension','Steering','Cabin','Electrical','Body & Paint','Cooling','Exhaust','Wheels & Tyres','Fuel System','Air System'];
+const OPT={model:['Ultra','Yodha'],yard:['SAR (RTW)','Medlog','Samudra','Puninar'],island:['Sumatera','Kalimantan','Sulawesi'],spoc:['Alex','Arief B','Aidin','Dandala','Rian'],agg:AGG.slice(),stage:['PDI','Transit India','Delivery','Transit Indonesia','Field / Customer'],sev:['Critical - Red','High - Orange','Medium - Yellow','Low - Green'],status:['Open','WIP','Closed','Awaiting For Part','Accidental Damage','Awaiting For Vendor','Awaiting For Manpower']};
+const DEF=JSON.parse(JSON.stringify(OPT));
+try{const o=JSON.parse(localStorage.getItem('pdi_opts_v1'));if(o)Object.keys(o).forEach(k=>{if(Array.isArray(o[k]))OPT[k]=o[k]})}catch(e){}
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const today=()=>new Date().toISOString().slice(0,10);
+let data=[],photos=[],asc=false;
+try{data=JSON.parse(localStorage.getItem(K))||[]}catch(e){}
+function save(){try{localStorage.setItem(K,JSON.stringify(data));return true}catch(e){toast('Could not save – browser storage is full. Remove some photos.');return false}}
+function toast(m){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>t.style.display='none',3500)}
+const opts=(a,sel,ph)=>(ph!=null?`<option value="">${ph}</option>`:'')+a.map(x=>`<option${x===sel?' selected':''}>${esc(x)}</option>`).join('');
+const parseCh=t=>[...new Set((String(t).toUpperCase().match(/MAT[A-Z0-9]+/g)||[]))];
+const sevC=s=>s?'sev-'+s[0]:'';
+
+// setup selects
+function fillSel(){const fs=(id,a,ph)=>{const e=$('#'+id),v=e.value;e.innerHTML=opts(a,'',ph);if(v&&[...e.options].some(o=>o.value===v))e.value=v};
+ fs('f_model',OPT.model,'Select…');fs('f_yard',OPT.yard,'Select…');fs('f_island',OPT.island,'Select…');fs('f_spoc',OPT.spoc,'Select…');fs('f_agg',OPT.agg,'Select…');fs('f_stage',OPT.stage,'Select…');fs('f_sev',OPT.sev,'Select…');fs('f_status',OPT.status);
+ fs('fm',OPT.model,'All');fs('fy',OPT.yard,'All');fs('fi',OPT.island,'All');fs('fp',OPT.spoc,'All');fs('fg',OPT.stage,'All');fs('fv',OPT.sev,'All');fs('ft',OPT.status,'All')}
+fillSel();
+$('#f_date').value=today();
+
+// tabs
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>go(b.dataset.t));
+
+// list entry: part no., STO no.
+const L={part:[],sto:[]},LH={part:'Part No.',sto:'STO No.'};
+function drawL(k){const a=L[k];$('#tb_'+k).innerHTML=a.length?`<table><tr><th>#</th><th>${LH[k]}</th><th></th></tr>${a.map((x,i)=>`<tr><td>${i+1}</td><td class="mono">${esc(x)}</td><td><span data-lx="${k}:${i}" title="Remove" style="cursor:pointer;color:var(--rt)">×</span></td></tr>`).join('')}</table>`:'<div class="em">List appears here</div>'}
+function addL(k){const el=$('#f_'+k+'i');el.value.toUpperCase().split(/[\n\r,;\t]+/).map(x=>x.trim()).filter(Boolean).forEach(x=>{if(!L[k].includes(x))L[k].push(x)});el.value='';drawL(k);el.focus()}
+$('#f_parta').onclick=()=>addL('part');$('#f_stoa').onclick=()=>addL('sto');
+$('#f_chi').oninput=e=>{e.target.value=e.target.value.toUpperCase().replace(/[^A-Z0-9]/g,'')};
+$('#f_chi').onpaste=e=>{const t=(e.clipboardData.getData('text')||'').trim();if(/[\s,;]/.test(t)||(t.toUpperCase().match(/MAT/g)||[]).length>1){e.preventDefault();toast('Only one chassis number is allowed')}else if(t.length>17){e.preventDefault();toast('A chassis number cannot be more than 17 characters')}};
+document.addEventListener('click',e=>{const x=e.target.dataset&&e.target.dataset.lx;if(x){const[k,i]=x.split(':');L[k].splice(+i,1);drawL(k)}});
+['part','sto'].forEach(drawL);
+
+// photos
+function enc(im){let out='';for(const[m,q]of[[800,.6],[640,.5],[520,.45],[420,.4],[340,.35]]){const k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);out=c.toDataURL('image/jpeg',q);if(out.length<60000)break}return out}
+function shrink(file){return new Promise(res=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>res(enc(im));im.onerror=()=>res(null);im.src=r.result};r.onerror=()=>res(null);r.readAsDataURL(file)})}
+const addPh=async fs=>(await Promise.all([...fs].map(shrink))).filter(Boolean);
+const thumbs=(arr,id)=>arr.map((s,i)=>`<span class="th"><img src="${s}" data-zoom alt="Defect photo ${i+1}"><b data-rm="${i}" data-id="${id}">×</b></span>`).join('');
+function drawFormPh(){$('#f_ph').innerHTML=thumbs(photos,'')}
+$('#f_photo').onchange=async e=>{photos.push(...await addPh(e.target.files));e.target.value='';drawFormPh()};
+$('#f_ph').onclick=e=>{if(e.target.dataset.rm!=null){photos.splice(+e.target.dataset.rm,1);drawFormPh()}};
+
+// submit
+const F=['date','yard','island','spoc','model','agg','sub','short','detail','stage','sev','status','qa','field','target','actual','rem'];
+function resetForm(){F.forEach(k=>$('#f_'+k).value='');$('#f_date').value=today();$('#f_status').value='Open';L.part=[];L.sto=[];['part','sto'].forEach(drawL);$('#f_chi').value='';photos=[];drawFormPh()}
+$('#reset').onclick=resetForm;
+$('#submit').onclick=()=>{
+ const need=[['date','Complaint Reported Date'],['model','Model'],['agg','Aggregate'],['short','Complaint in Short'],['stage','Detection Stage'],['sev','Severity'],['status','Status']];
+ for(const[k,n]of need)if(!$('#f_'+k).value.trim()){$('#f_'+k).focus();return toast('Please fill: '+n)}
+ const cv=$('#f_chi').value.trim().toUpperCase();if(!/^MAT[A-Z0-9]{1,14}$/.test(cv)){$('#f_chi').focus();return toast('Enter one valid chassis number – it must start with MAT (max 17 characters)')}const ch=[cv];
+ if($('#f_parti').value.trim())addL('part');if($('#f_stoi').value.trim())addL('sto');
+ const r={id:Date.now()+Math.random().toString(36).slice(2,6),chassis:ch,part:[...L.part],sto:[...L.sto],photos:[...photos]};
+ F.forEach(k=>r[k]=$('#f_'+k).value.trim());if(r.status==='Closed')r.closedOn=today();
+ data.push(r);if(!save()){data.pop();return}
+ resetForm();updCnt();refreshSub();toast('Complaint submitted – see the Track Status tab.')};
+const updCnt=()=>$('#cnt').textContent=data.length;
+
+// filters
+const uniq=a=>[...new Set(a.filter(Boolean))].sort((x,y)=>x.localeCompare(y));
+function buildFilters(){
+ const a=$('#fa').value,s=$('#fs').value,aggs=uniq(data.map(r=>r.agg)),subs=uniq(data.filter(r=>!a||r.agg===a).map(r=>r.sub));
+ $('#fa').innerHTML=opts(aggs,aggs.includes(a)?a:'','All');$('#fs').innerHTML=opts(subs,subs.includes(s)?s:'','All');
+ $('#aggList').innerHTML=uniq([...AGG,...aggs]).map(x=>`<option value="${esc(x)}">`).join('');
+ $('#subList').innerHTML=uniq(data.map(r=>r.sub)).map(x=>`<option value="${esc(x)}">`).join('')}
+['q','fy','fi','fp','fm','fa','fs','fg','fv','ft'].forEach(id=>$('#'+id).addEventListener(id==='q'?'input':'change',render));
+$('#clr').onclick=()=>{['q','fy','fi','fp','fm','fa','fs','fg','fv','ft'].forEach(id=>$('#'+id).value='');render()};
+
+function view(){
+ const q=$('#q').value.toLowerCase().trim(),v=id=>$('#'+id).value;
+ return data.filter(r=>(!v('fy')||r.yard===v('fy'))&&(!v('fi')||r.island===v('fi'))&&(!v('fp')||r.spoc===v('fp'))&&(!v('fm')||r.model===v('fm'))&&(!v('fa')||r.agg===v('fa'))&&(!v('fs')||r.sub===v('fs'))&&(!v('fg')||r.stage===v('fg'))&&(!v('fv')||r.sev===v('fv'))&&(!v('ft')||r.status===v('ft'))
+  &&(!q||[r.date,r.model,r.agg,r.sub,r.short,r.detail,r.stage,r.sev,r.status,r.qa,r.field,r.target,r.actual,r.rem,r.yard,r.island,r.spoc,(r.part||[]).join(' '),(r.sto||[]).join(' '),r.chassis.join(' ')].join(' ').toLowerCase().includes(q)))
+  .sort((a,b)=>(a.date||'').localeCompare(b.date||'')*(asc?1:-1)||(a.id>b.id?1:-1)*(asc?1:-1))}
+
+const H=['#','Complaint Date','PDI Yard','Island','SEN - SPOC','Model','Aggregate','Sub-Aggregate','Complaint in Short','Detailed Observation','Affected Vehicle Qty.','Part No.','STO No.','Detection Stage','Severity','Status','Corrective Action (QA / Vendor)','Corrective Action (Field Team, Indonesia)','Target Closure','Actual Closure','Affected Chassis','Remarks','Complaint Age','Photos',''];
+function render(){
+ buildFilters();updCnt();QM=qtyMap();const rows=view();
+ $('#stats').textContent=`Showing ${rows.length} of ${data.length} complaints · ${new Set(rows.flatMap(r=>r.chassis)).size} vehicles affected · data size approx. ${szMB()} MB`;
+ const ta=(r,f,w)=>`<td style="min-width:${w}px"><textarea data-id="${r.id}" data-f="${f}">${esc(r[f])}</textarea></td>`;
+ const dt=(r,f,od)=>`<td><input type="date" data-id="${r.id}" data-f="${f}" value="${esc(r[f])}"${od?' class="od"':''}></td>`;
+ const sl=(r,f,a,cls,ph)=>`<td><select data-id="${r.id}" data-f="${f}" class="${cls||''}">${opts(!r[f]||a.includes(r[f])?a:[...a,r[f]],r[f],ph)}</select></td>`;
+ const od=r=>r.target&&r.status!=='Closed'&&!r.actual&&r.target<today();
+ $('#tbl').innerHTML=`<thead><tr>${H.map((h,i)=>i===1?`<th class="sort" id="sd">Complaint Date ${asc?'▲':'▼'}</th>`:`<th>${h}</th>`).join('')}</tr></thead><tbody>`+
+ (rows.length?rows.map((r,i)=>`<tr>
+ <td>${i+1}</td>${dt(r,'date')}${sl(r,'yard',OPT.yard,'','—')}${sl(r,'island',OPT.island,'','—')}${sl(r,'spoc',OPT.spoc,'','—')}${sl(r,'model',OPT.model)}
+ ${sl(r,'agg',OPT.agg)}
+ <td><input data-id="${r.id}" data-f="sub" list="subList" value="${esc(r.sub)}" style="min-width:120px"></td>
+ ${ta(r,'short',180)}${ta(r,'detail',240)}<td class="qty" title="Unique chassis with the same Model, Aggregate and Sub-Aggregate">${qtyOf(r)}</td>${ltd(r,'part')}${ltd(r,'sto')}
+ ${sl(r,'stage',OPT.stage)}${sl(r,'sev',OPT.sev,sevC(r.sev))}${sl(r,'status',OPT.status)}
+ ${ta(r,'qa',200)}${ta(r,'field',200)}${dt(r,'target',od(r))}${dt(r,'actual')}
+ <td style="min-width:170px"><input class="mono" maxlength="17" data-id="${r.id}" data-f="chassis" value="${esc(r.chassis.join(', '))}"></td>
+ ${ta(r,'rem',160)}<td class="qty${r.status!=='Closed'&&ageOf(r)>30?' od':''}" style="font-size:14px;white-space:nowrap">${ageOf(r)} day${ageOf(r)===1?'':'s'}${r.status==='Closed'?'<div style="font-size:11px;font-weight:400;color:var(--mu)">closed</div>':''}</td>
+ <td style="min-width:150px"><div class="ph" style="margin:0">${thumbs(r.photos||[],r.id)}</div><label class="btn s" style="display:inline-block;margin:4px 0 0;padding:3px 8px;font-size:12px;cursor:pointer">+ Add<input type="file" accept="image/*" multiple hidden data-addph="${r.id}"></label><div class="pz mini" contenteditable="true" spellcheck="false" data-pz="${r.id}">📋 Paste</div></td>
+ <td><button class="del" title="${unlocked?'Delete complaint':'Locked – unlock to delete'}" data-del="${r.id}">${unlocked?'🗑':'🔒'}</button></td></tr>`).join(''):`<tr><td colspan="${H.length}" class="empty">${data.length?'No complaints match the current search / filters.':'No complaints logged yet. Use the “Log Complaint” tab to add one.'}</td></tr>`)+'</tbody>';
+ $('#tbl').classList.toggle('ro',!unlocked);
+ const sd=$('#sd');if(sd)sd.onclick=()=>{asc=!asc;render()}}
+
+const tb=$('#tbl');
+tb.addEventListener('change',async e=>{
+ const t=e.target;
+ if(t.dataset.addph){const r=data.find(x=>x.id===t.dataset.addph);r.photos=(r.photos||[]).concat(await addPh(t.files));if(!save()){r.photos=r.photos.slice(0,-t.files.length)}return render()}
+ const f=t.dataset.f;if(!f)return;const r=data.find(x=>x.id===t.dataset.id);
+ if(f==='chassis'){const c=chList(t.value);if(!c)return render();r.chassis=c}else if(f==='part'||f==='sto'){r[f]=parseList(t.value)}
+ else r[f]=t.value;
+ if(f==='status'){if(t.value==='Closed'){if(!r.closedOn)r.closedOn=today()}else delete r.closedOn}
+ save();render()});
+tb.addEventListener('click',e=>{
+ const t=e.target;if(t.dataset.zoom!=null)return zoom(t.src);
+ if(t.dataset.del&&!unlocked){askPw(()=>toast('Unlocked – click the delete button again'));return}
+ if(t.dataset.del&&confirm('Delete this complaint permanently?')){data=data.filter(x=>x.id!==t.dataset.del);save();render()}
+ else if(t.dataset.rm!=null&&t.dataset.id){const r=data.find(x=>x.id===t.dataset.id);r.photos.splice(+t.dataset.rm,1);save();render()}
+ else if(t.dataset.zoom!=null)zoom(t.src)});
+$('#log').addEventListener('click',e=>{if(e.target.dataset.zoom!=null)zoom(e.target.src)});
+function zoom(s){$('#lb img').src=s;$('#lb').style.display='flex'}
+$('#lb').onclick=()=>$('#lb').style.display='none';
+
+// copy for Excel
+$('#copy').onclick=()=>{
+ const h=['Complaint Reported Date','Model','Aggregate','Sub-Aggregate','Complaint in Short','Detailed Observation','Affected Vehicle Qty.','Complaint Detection Stage','Severity','Status','Corrective Action Received from QA/ Vendor','Corrective Action Taken by Field Team in Indonesia','Target Closure Date','Actual Closure Date','Affected Chassis','Remarks'];
+ const c=s=>String(s??'').replace(/[\t\r\n]+/g,' ');
+ const txt=[h.join('\t'),...view().map(r=>[r.date,r.model,r.agg,r.sub,r.short,r.detail,r.chassis.length,r.stage,r.sev,r.status,r.qa,r.field,r.target,r.actual,r.chassis.join(', '),r.rem].map(c).join('\t'))].join('\n');
+ const ok=()=>toast('Copied – paste into Excel (Ctrl+V)');
+ const fb=()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){toast('Copy not available in this browser')}a.remove()};
+ navigator.clipboard?navigator.clipboard.writeText(txt).then(ok,fb):fb()};
+/* ---------- v2: access control, settings, paste, analysis ---------- */
+let unlocked=false,cur='log';
+try{unlocked=sessionStorage.getItem('pdi_u')==='1'}catch(e){}
+const PH='284f1ea9df64ec10830b02069c48c372ad6900423764ba1f25330d5a0873066b';
+const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(x=>x.toString(16).padStart(2,'0')).join('');
+let pend=null;function askPw(cb){pend=typeof cb==='function'?cb:null;$('#pwi').value='';$('#pwe').textContent='';$('#pw').classList.remove('hide');$('#pwi').focus()}
+async function tryPw(){let ok=false;try{ok=await sha($('#pwi').value)===PH}catch(e){$('#pwe').textContent='Password check is not supported in this browser.';return}
+ if(!ok){$('#pwe').textContent='Incorrect password.';$('#pwi').select();return}
+ $('#pw').classList.add('hide');setU(true);toast('Unlocked');const c=pend;pend=null;if(c)c()}
+$('#pwok').onclick=tryPw;$('#pwx').onclick=()=>{pend=null;$('#pw').classList.add('hide')};
+$('#pwi').onkeydown=e=>{if(e.key==='Enter')tryPw();if(e.key==='Escape')$('#pwx').click()};
+function setU(v){unlocked=v;try{sessionStorage.setItem('pdi_u',v?'1':'')}catch(e){}setLockUI();render();mngUI()}
+function setLockUI(){$('#lk').textContent=unlocked?'🔓 Unlocked – click to lock':'🔒 Locked – click to unlock'}
+function mngUI(){$('#mLock').classList.toggle('hide',unlocked);$('#mSet').classList.toggle('hide',!unlocked);if(unlocked)drawO()}
+$('#lk').onclick=()=>unlocked?(setU(false),toast('Locked')):askPw();
+$('#mUn').onclick=askPw;$('#m_lock').onclick=()=>{setU(false);toast('Locked')};
+function go(t){cur=t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x.dataset.t===t));['log','trk','ana','mng'].forEach(s=>$('#'+s).classList.toggle('hide',s!==t));
+ if(t==='log')refreshSub();if(t==='trk')render();if(t==='ana')ana();if(t==='mng'){mngUI();if(!unlocked)askPw()}}
+
+// header settings (logo / background)
+const SK='pdi_settings_v1';let S={};try{S=JSON.parse(localStorage.getItem(SK))||{}}catch(e){}
+function applyS(){const b=$('#banner');b.classList.toggle('bg',!!S.bg);b.style.backgroundImage=S.bg?`linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.25)),url("${S.bg}")`:'';const l=$('#logo');l.classList.toggle('hide',!S.logo);if(S.logo)l.src=S.logo}
+function saveS(){try{localStorage.setItem(SK,JSON.stringify(S));return true}catch(e){toast('Could not save – the image is too large for browser storage.');return false}}
+function img2(file,m,type,q){return new Promise(res=>{if(!file)return res(null);const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL(type,q))};im.onerror=()=>res(null);im.src=r.result};r.onerror=()=>res(null);r.readAsDataURL(file)})}
+function setImg(inp,key,m,type,q,msg){inp.onchange=async e=>{if(!unlocked)return;const d=await img2(e.target.files[0],m,type,q);e.target.value='';if(!d)return toast('Could not read that image');const o=S[key];S[key]=d;if(!saveS())S[key]=o;else toast(msg);applyS()}}
+setImg($('#m_bg'),'bg',1800,'image/jpeg',.75,'Header background updated');setImg($('#m_logo'),'logo',400,'image/png',1,'Logo updated');
+$('#m_bgx').onclick=()=>{delete S.bg;saveS();applyS()};$('#m_logox').onclick=()=>{delete S.logo;saveS();applyS()};
+
+// paste photos (only works inside a paste box)
+const pzKey=e=>{if(!(e.ctrlKey||e.metaKey)&&!/^(Arrow|Tab|Home|End|Shift|Control|Meta|Alt)/.test(e.key))e.preventDefault()};
+async function pzPaste(e,cb){e.preventDefault();const fs=[...(e.clipboardData&&e.clipboardData.items||[])].filter(i=>i.kind==='file'&&i.type.startsWith('image/')).map(i=>i.getAsFile()).filter(Boolean);if(!fs.length)return toast('No photo found on the clipboard');cb(await addPh(fs))}
+const pz=$('#pz');
+pz.addEventListener('keydown',pzKey);pz.addEventListener('beforeinput',e=>{if(e.inputType!=='insertFromPaste')e.preventDefault()});
+['cut','drop'].forEach(n=>pz.addEventListener(n,e=>e.preventDefault()));
+pz.addEventListener('paste',e=>pzPaste(e,a=>{photos.push(...a);drawFormPh();toast(a.length+' photo(s) pasted')}));
+tb.addEventListener('keydown',e=>{if(e.target.dataset.pz)pzKey(e)});
+tb.addEventListener('beforeinput',e=>{if(e.target.dataset.pz&&e.inputType!=='insertFromPaste')e.preventDefault()});
+['cut','drop'].forEach(n=>tb.addEventListener(n,e=>{if(e.target.dataset.pz)e.preventDefault()}));
+tb.addEventListener('paste',e=>{const id=e.target.dataset&&e.target.dataset.pz;if(!id)return;pzPaste(e,a=>{const r=data.find(x=>x.id===id),old=r.photos||[];r.photos=old.concat(a);if(!save())r.photos=old;else toast('Photo added');render()})});
+
+// analysis
+const SEVC0={'Critical - Red':'#d92d20','High - Orange':'#f79009','Medium - Yellow':'#eab308','Low - Green':'#12b76a'},STC0={Open:'#ef4444',WIP:'#3b82f6',Closed:'#12b76a','Awaiting For Part':'#f59e0b','Accidental Damage':'#64748b','Awaiting For Vendor':'#a855f7','Awaiting For Manpower':'#14b8a6'},PAL=['#2563eb','#0ea5e9','#14b8a6','#f59e0b','#ec4899','#8b5cf6','#64748b'];
+const mkc=o=>new Proxy(o,{get:(t,k)=>t[k]||'#94a3b8'}),SEVC=mkc(SEVC0),STC=mkc(STC0);
+const fd=s=>s?new Date(s+'T00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}):'–',fd0=s=>new Date(s+'T00:00').toLocaleDateString('en-GB',{day:'2-digit',month:'short'});
+const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+function donut(items){const tot=items.reduce((n,i)=>n+i.v,0),R=52,C=2*Math.PI*R;let off=0;
+ const arcs=items.filter(i=>i.v).map(i=>{const d=i.v/tot*C,s=`<circle r="${R}" cx="70" cy="70" fill="none" stroke="${i.c}" stroke-width="22" stroke-dasharray="${d} ${C-d}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;off+=d;return s}).join('');
+ return `<div class="dn"><svg viewBox="0 0 140 140" width="150" height="150" role="img"><circle r="${R}" cx="70" cy="70" fill="none" stroke="var(--hd)" stroke-width="22"/>${arcs}<text x="70" y="77" text-anchor="middle" font-size="22" font-weight="700" fill="currentColor">${tot}</text></svg><ul class="lg">${items.map(i=>`<li><i style="background:${i.c}"></i>${esc(i.l)} <b>${i.v}</b>${tot?' ('+Math.round(i.v/tot*100)+'%)':''}</li>`).join('')}</ul></div>`}
+function hbar(rows){if(!rows.length||!rows.some(r=>r.t))return '<div class="empty">No data</div>';const m=Math.max(1,...rows.map(r=>r.t));
+ return rows.map(r=>`<div class="hb"><span class="hl" title="${esc(r.l)}">${esc(r.l)}</span><span class="ht">${r.segs.map(s=>s.v?`<span style="width:${s.v/m*100}%;background:${s.c}" title="${esc(s.n||'')}: ${s.v}"></span>`:'').join('')}</span><b>${r.t}</b></div>`).join('')}
+function cols(rows){if(!rows.length)return '<div class="empty">No data</div>';const m=Math.max(1,...rows.map(r=>r.t));
+ return `<div class="cl">${rows.map(r=>`<div class="cc"><b>${r.t}</b><div class="cs" style="height:${r.t/m*130}px">${r.segs.map(s=>s.v?`<span style="height:${s.v/r.t*100}%;background:${s.c}" title="${esc(s.n||'')}: ${s.v}"></span>`:'').join('')}</div><em>${r.l}</em></div>`).join('')}</div>`}
+const grp=(a,f)=>{const o={};a.forEach(r=>{const k=f(r);if(k)(o[k]=o[k]||[]).push(r)});return Object.entries(o)};
+function ana(){
+ const m=$('#am').value,a=$('#ad1').value,b=$('#ad2').value,T=today();
+ const R=data.filter(r=>(!m||r.model===m)&&(!a||r.date>=a)&&(!b||r.date<=b)),sum=x=>new Set(x.flatMap(r=>r.chassis)).size;
+ const op=R.filter(r=>r.status!=='Closed'),cl=R.length-op.length,od=op.filter(r=>r.target&&r.target<T).length,hi=op.filter(r=>/^(Critical|High)/.test(r.sev));
+ $('#asub').textContent=`${m||'All models'} · ${a||b?(a?fd(a):'start')+' to '+(b?fd(b):'today'):'all dates'} · generated ${fd(T)}`;
+ $('#kp').innerHTML=[[R.length,'Total complaints','#2563eb'],[sum(R),'Vehicles affected','#8b5cf6'],[op.length,'Not yet closed','#ef4444'],[cl,'Closed','#12b76a'],[R.length?Math.round(cl/R.length*100)+'%':'–','Closure rate','#14b8a6'],[hi.length,'Critical + High open','#f79009'],[od,'Past target date','#d92d20']].map(k=>`<div class="kc" style="border-left-color:${k[2]}"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('');
+ $('#sevLg').innerHTML='Severity colours: '+OPT.sev.map(v=>`<span style="margin-right:12px"><i style="background:${SEVC[v]}"></i>${v}</span>`).join('');
+ const sg=x=>OPT.sev.map(v=>({v:x.filter(r=>r.sev===v).length,c:SEVC[v],n:v}));
+ const stage=[...OPT.stage,...uniq(R.map(r=>r.stage)).filter(x=>!OPT.stage.includes(x))].map(s=>{const x=R.filter(r=>r.stage===s);return{l:s,t:x.length,segs:sg(x)}});
+ const agg=grp(R,r=>r.agg).map(([k,x])=>({l:k,t:x.length,segs:sg(x)})).sort((p,q)=>q.t-p.t).slice(0,10);
+ const sub=grp(R,r=>r.sub&&r.agg+' › '+r.sub).map(([k,x])=>{const v=sum(x);return{l:k,t:v,segs:[{v,c:'#0ea5e9',n:'Vehicles'}]}}).sort((p,q)=>q.t-p.t).slice(0,10);
+ const age=r=>Math.floor((new Date(T+'T00:00')-new Date(r.date+'T00:00'))/864e5);
+ const ageR=[['0–7 days',0,7],['8–15 days',8,15],['16–30 days',16,30],['Over 30 days',31,1e9]].map(([l,lo,hi2])=>{const x=op.filter(r=>r.date&&age(r)>=lo&&age(r)<=hi2);return{l,t:x.length,segs:sg(x)}});
+ const ds=R.map(r=>r.date).filter(Boolean).sort(),wk=ds.length>1&&(new Date(ds[ds.length-1])-new Date(ds[0]))/864e5>45;
+ const pk=d=>{if(!wk)return d;const x=new Date(d+'T00:00');x.setDate(x.getDate()-(x.getDay()+6)%7);return ymd(x)};
+ const tr=grp(R.filter(r=>r.date),r=>pk(r.date)).sort((p,q)=>p[0]<q[0]?-1:1).slice(-24).map(([k,x])=>({l:fd0(k),t:x.length,segs:sg(x)}));
+ const top=hi.slice().sort((x,y)=>OPT.sev.indexOf(x.sev)-OPT.sev.indexOf(y.sev)||(x.date||'').localeCompare(y.date||'')).slice(0,8);
+ const C=(t,h,w)=>`<div class="card${w?' wide':''}"><h3>${t}</h3>${h}</div>`;
+ $('#ag').innerHTML=
+  C('Complaints by status',donut([...OPT.status,...uniq(R.map(r=>r.status)).filter(x=>!OPT.status.includes(x))].map(s=>({l:s,v:R.filter(r=>r.status===s).length,c:STC[s]}))))+
+  C('Complaints by severity',donut(OPT.sev.map(s=>({l:s,v:R.filter(r=>r.sev===s).length,c:SEVC[s]}))))+
+  C('Vehicles affected by model',donut(OPT.model.map((s,i)=>({l:s,v:sum(R.filter(r=>r.model===s)),c:PAL[i]}))))+
+  C('Complaints by detection stage',hbar(stage))+
+  C('Top aggregates (complaints, by severity)',hbar(agg))+
+  C('Top sub-aggregates (vehicles affected)',hbar(sub))+
+  C('Ageing of open complaints',hbar(ageR))+
+  C('Complaints reported over time ('+(wk?'weekly, week starting':'daily')+')',cols(tr),1)+
+  C('Critical and High complaints still open',top.length?`<div style="overflow:auto"><table class="mt"><tr><th>Date</th><th>Model</th><th>Aggregate</th><th>Complaint</th><th>Qty</th><th>Severity</th><th>Stage</th><th>Status</th><th>Target</th></tr>${top.map(r=>`<tr><td>${fd(r.date)}</td><td>${esc(r.model)}</td><td>${esc(r.agg)}</td><td>${esc(r.short)}</td><td>${r.chassis.length}</td><td><span class="${sevC(r.sev)}" style="padding:1px 6px;border-radius:4px;white-space:nowrap">${esc(r.sev)}</span></td><td>${esc(r.stage)}</td><td>${esc(r.status)}</td><td${r.target&&r.target<T?' class="od"':''}>${fd(r.target)}</td></tr>`).join('')}</table></div>`:'<div class="empty">None – no Critical or High complaints are open.</div>',1)}
+$('#am').innerHTML=opts(OPT.model,'','All models');['am','ad1','ad2'].forEach(id=>$('#'+id).onchange=()=>ana());
+$('#ax').onclick=()=>{['am','ad1','ad2'].forEach(id=>$('#'+id).value='');ana()};$('#ap').onclick=()=>window.print();
+/* ---------- v3: age, list parsing, dropdown manager, Excel export ---------- */
+function ageOf(r){if(!r.date)return 0;const e=r.status==='Closed'?(r.actual||r.closedOn||today()):today();return Math.max(0,Math.round((new Date(e+'T00:00')-new Date(r.date+'T00:00'))/864e5))}
+const ltd=(r,f)=>`<td style="min-width:150px"><textarea class="mono" data-id="${r.id}" data-f="${f}" rows="${Math.min(Math.max((r[f]||[]).length,2),6)}">${esc((r[f]||[]).join('\n'))}</textarea></td>`;
+const parseList=v=>[...new Set(String(v).split(/[\n\r,;\t]+/).map(x=>x.trim().toUpperCase()).filter(Boolean))];
+function chList(v){const tk=String(v).toUpperCase().split(/[\s,;]+/).filter(Boolean);if(!tk.length){toast('At least one chassis number is required');return null}if(tk.length>1){toast('Only one chassis number is allowed per complaint');return null}
+ const bad=tk.find(x=>!/^MAT[A-Z0-9]{1,14}$/.test(x));if(bad){toast('Invalid chassis “'+bad+'” – it must start with MAT and be at most 17 characters');return null}return[...new Set(tk)]}
+function refreshSub(){const a=$('#f_agg').value;$('#subList').innerHTML=uniq(data.filter(r=>!a||r.agg===a).map(r=>r.sub)).map(x=>`<option value="${esc(x)}">`).join('')}
+$('#f_agg').onchange=refreshSub;refreshSub();
+// dropdown manager
+const OL={yard:'PDI Yard',island:'Island',spoc:'SEN - SPOC',model:'Model',agg:'Aggregate / Complaint Parts',stage:'Complaint Detection Stage',sev:'Severity',status:'Status'};
+function saveO(){try{localStorage.setItem('pdi_opts_v1',JSON.stringify(OPT))}catch(e){toast('Could not save the dropdown lists')}fillSel();drawO();render()}
+function drawO(){$('#mOpts').innerHTML=Object.keys(OL).map(k=>`<div class="card" style="padding:12px"><h3>${OL[k]}</h3><div class="ph" style="margin:0 0 8px">${OPT[k].map((x,i)=>`<span class="chip">${esc(x)}<b data-ox="${k}:${i}" title="Remove">×</b></span>`).join('')||'<em>No options</em>'}</div><div style="display:flex;gap:6px"><input data-oi="${k}" placeholder="New option…"><button class="btn s" data-oa="${k}">Add</button></div></div>`).join('')}
+const mo=$('#mOpts');
+mo.onclick=e=>{if(!unlocked)return;const t=e.target;
+ if(t.dataset.oa){const k=t.dataset.oa,v=mo.querySelector(`input[data-oi="${k}"]`).value.trim();if(!v)return;if(OPT[k].some(x=>x.toLowerCase()===v.toLowerCase()))return toast('Already in the list');OPT[k].push(v);saveO()}
+ else if(t.dataset.ox){const[k,i]=t.dataset.ox.split(':'),v=OPT[k][+i];if(OPT[k].length<2)return toast('Keep at least one option');if(k==='status'&&v==='Closed')return toast('“Closed” drives complaint ageing and analysis, so it cannot be removed');OPT[k].splice(+i,1);saveO();toast('Removed “'+v+'” – existing complaints keep their value')}};
+mo.onkeydown=e=>{if(e.key==='Enter'&&e.target.dataset.oi)mo.querySelector(`button[data-oa="${e.target.dataset.oi}"]`).click()};
+$('#m_rst').onclick=()=>{if(!unlocked||!confirm('Reset every dropdown list to its original defaults?'))return;Object.keys(DEF).forEach(k=>OPT[k]=DEF[k].slice());saveO()};
+// export / copy
+const XH=['Complaint Reported Date','PDI Yard','Island','SEN - SPOC','Model','Aggregate','Sub-Aggregate','Complaint in Short','Detailed Observation','Affected Vehicle Qty.','Part No.','STO No.','Complaint Detection Stage','Severity','Status','Corrective Action Received from QA/ Vendor','Corrective Action Taken by Field Team in Indonesia','Target Closure Date','Actual Closure Date','Affected Chassis','Remarks','Complaint Age (Days)','Photos (count)'];
+const xRows=()=>{QM=qtyMap();return view().map(r=>[r.date,r.yard,r.island,r.spoc,r.model,r.agg,r.sub,r.short,r.detail,qtyOf(r),(r.part||[]).join(', '),(r.sto||[]).join(', '),r.stage,r.sev,r.status,r.qa,r.field,r.target,r.actual,r.chassis.join(', '),r.rem,ageOf(r),(r.photos||[]).length].map(v=>v??''))};
+$('#copy').onclick=()=>{const txt=[XH,...xRows()].map(a=>a.map(v=>String(v).replace(/[\t\r\n]+/g,' ')).join('\t')).join('\n'),ok=()=>toast('Copied – paste into Excel (Ctrl+V)'),
+  fb=()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){toast('Copy not available in this browser')}a.remove()};
+ navigator.clipboard?navigator.clipboard.writeText(txt).then(ok,fb):fb()};
+$('#xl').onclick=async()=>{
+ if(typeof XLSX==='undefined')return toast('The Excel library could not load – check the internet connection');
+ const rows=xRows();if(!rows.length)return toast('No rows to export');
+ const ws=XLSX.utils.aoa_to_sheet([XH,...rows]);ws['!cols']=XH.map((h,i)=>({wch:[7,8,10,8,9].includes(i)?14:Math.min(42,Math.max(14,h.length))}));ws['!autofilter']={ref:ws['!ref']};
+ const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'PDI Complaints');
+ const buf=XLSX.write(wb,{bookType:'xlsx',type:'array'});
+ let dl=null;try{dl=window.claude?await claude.use('downloads'):null}catch(e){}
+ if(!dl)return toast('File download is not available in this view – use “Copy table for Excel” instead');
+ try{await dl.save({filename:'PDI_Complaint_Report_'+today()+'.xlsx',data:buf});toast('Excel file ready – '+rows.length+' complaint(s) exported')}catch(e){if(!e||e.code!=='declined')toast('Could not save the file ('+((e&&e.code)||'error')+')')}};
+/* ---------- v4: quantity, gallery, data upload, gated export ---------- */
+let QM={};
+const qkey=r=>[r.model||'',r.agg||'',(r.sub||'').trim().toLowerCase()].join('|');
+function qtyMap(){const m={};data.forEach(r=>{const k=qkey(r);(m[k]=m[k]||new Set());(r.chassis||[]).forEach(c=>m[k].add(c))});return m}
+const qtyOf=r=>{const t=QM[qkey(r)];return t?t.size:(r.chassis||[]).length};
+const szMB=()=>{try{return((localStorage.getItem(K)||'').length/1048576).toFixed(1)}catch(e){return '\u2013'}};
+// shrink photos that were stored before stronger compression
+async function compact(){let ch=false;for(const r of data){if(!r.photos)continue;for(let i=0;i<r.photos.length;i++){const p=r.photos[i];if(p.length>70000){const o=await new Promise(res=>{const im=new Image();im.onload=()=>res(enc(im));im.onerror=()=>res(null);im.src=p});if(o&&o.length<p.length){r.photos[i]=o;ch=true}}}}if(ch){save();render()}}
+// failure photo gallery
+function drawGal(){const box=$('#gal');if(box.classList.contains('hide'))return;
+ const m=$('#am').value,a=$('#ad1').value,b=$('#ad2').value,R=data.filter(r=>(!m||r.model===m)&&(!a||r.date>=a)&&(!b||r.date<=b));
+ const G=grp(R,r=>(r.sub||r.agg)?(r.agg||'')+'|'+(r.sub||'').trim().toLowerCase():'').map(([k,x])=>{
+  const ph=x.filter(r=>(r.photos||[]).length).sort((p,q)=>q.chassis.length-p.chassis.length),s=x.find(r=>r.sub);
+  return{n:new Set(x.flatMap(r=>r.chassis)).size,c:x.length,name:s?s.sub.trim():(x[0].agg||'\u2013'),agg:x[0].agg||'',img:ph.length?ph[0].photos[0]:''}}).filter(g=>g.img).sort((p,q)=>q.n-p.n||q.c-p.c).slice(0,10);
+ $('#galG').innerHTML=G.length?G.map((g,i)=>`<div class="gc"><img src="${g.img}" alt="${esc(g.name)}"><span class="rk">#${i+1}</span><span class="ct">${g.n} failure${g.n===1?'':'s'}</span><div class="cap"><b>${esc(g.name)}</b><span>${esc(g.agg)}</span></div></div>`).join(''):'<div class="empty">No failure photos for the selected filters. Add photos in Log Complaint or Track Status.</div>'}
+const ana0=ana;ana=function(){ana0();drawGal()};
+$('#gbtn').onclick=()=>{const b=$('#gal'),h=b.classList.toggle('hide');$('#gbtn').textContent=h?'📷 See the failure photos':'🙈 Hide failure photos';if(!h){drawGal();b.scrollIntoView({behavior:'smooth',block:'start'})}};
+$('#galG').onclick=e=>{const g=e.target.closest('.gc');if(g)zoom(g.querySelector('img').src)};
+// data upload (Manage)
+const XK={date:['complaintreporteddate','date','complaintdate','reporteddate'],yard:['pdiyard','yard'],island:['island'],spoc:['senspoc','spoc'],model:['model'],agg:['aggregate','aggregatecomplaintparts','aggregatecomplaintpart','complaintparts'],sub:['subaggregate'],short:['complaintinshort','complaint'],detail:['detailedobservation','observation'],stage:['complaintdetectionstage','detectionstage','stage'],sev:['severity'],status:['status'],qa:['correctiveactionreceivedfromqavendor','correctiveactionqavendor'],field:['correctiveactiontakenbyfieldteamindonesia','correctiveactionfieldteamindonesia'],target:['targetclosuredate','targetclosure'],actual:['actualclosuredate','actualclosure'],chassis:['affectedchassis','chassis','chassisno'],part:['partno','partnumber'],sto:['stono','stonumber'],rem:['remarks']};
+const nk=s=>String(s).toLowerCase().replace(/[^a-z0-9]/g,'');
+function toISO(v){if(v==null||v==='')return '';if(v instanceof Date)return isNaN(v)?'':new Date(v.getTime()+432e5).toISOString().slice(0,10);
+ if(typeof v==='number')return new Date(Math.round((v-25569)*864e5)+432e5).toISOString().slice(0,10);
+ const s=String(v).trim();let m=s.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/);if(m)return m[1]+'-'+m[2].padStart(2,'0')+'-'+m[3].padStart(2,'0');
+ m=s.match(/^(\d{1,2})[-\/. ]([A-Za-z]{3,9}|\d{1,2})[-\/. ](\d{2,4})/);if(m){let mo=m[2],y=m[3];if(isNaN(mo)){mo=['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'].indexOf(mo.slice(0,3).toLowerCase())+1;if(!mo)return ''}if(y.length===2)y='20'+y;return y+'-'+String(mo).padStart(2,'0')+'-'+m[1].padStart(2,'0')}
+ const d=new Date(s);return isNaN(d)?'':ymd(d)}
+const mopt=(k,v)=>{v=String(v==null?'':v).trim();if(!v)return '';const l=v.toLowerCase();return OPT[k].find(x=>x.toLowerCase()===l)||(k==='sev'?OPT.sev.find(x=>x.toLowerCase().startsWith(l)):'')||v};
+const upMsg=(t,bad)=>{const e=$('#m_upmsg');e.textContent=t;e.style.color=bad?'var(--rt)':'var(--gt)'};
+const sig=r=>[r.date,(r.chassis||[]).join(','),(r.agg||'').toLowerCase(),(r.sub||'').trim().toLowerCase(),(r.short||'').trim().toLowerCase()].join('|');
+$('#m_upgo').onclick=async()=>{
+ if(!unlocked)return askPw();
+ const f=$('#m_up').files[0];if(!f)return upMsg('Choose an Excel or CSV file first.',1);
+ if(typeof XLSX==='undefined')return upMsg('The Excel library could not load \u2013 check the internet connection.',1);
+ const rep=$('#m_rep').checked;if(rep&&!confirm('This deletes all existing complaints (including photos) and replaces them with the uploaded data. Continue?'))return;
+ let rows;try{const wb=XLSX.read(await f.arrayBuffer(),{type:'array',cellDates:true});rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:'',raw:true})}catch(e){return upMsg('Could not read that file.',1)}
+ if(!rows.length)return upMsg('No data rows found in the first sheet.',1);
+ const idx={};Object.keys(rows[0]).forEach(h=>{const n=nk(h);for(const k in XK)if(XK[k].includes(n)&&!(k in idx))idx[k]=h});
+ if(!idx.date||!idx.chassis)return upMsg('The columns \u201cComplaint Reported Date\u201d and \u201cAffected Chassis\u201d were not found. Use \u201cDownload template\u201d to see the format.',1);
+ const seen=new Set(rep?[]:data.map(sig)),out=[],skip=[];let dup=0;
+ rows.forEach((row,i)=>{const g=k=>idx[k]?row[idx[k]]:'',n='Row '+(i+2),date=toISO(g('date')),chs=[...new Set(String(g('chassis')).toUpperCase().split(/[\s,;]+/).filter(Boolean))];
+  if(!date)return skip.push(n+': invalid date');if(!chs.length)return skip.push(n+': chassis missing');
+  const bad=chs.find(c=>!/^MAT[A-Z0-9]{1,14}$/.test(c));if(bad)return skip.push(n+': invalid chassis '+bad);
+  const base={date,yard:mopt('yard',g('yard')),island:mopt('island',g('island')),spoc:mopt('spoc',g('spoc')),model:mopt('model',g('model')),agg:mopt('agg',g('agg')),sub:String(g('sub')).trim(),short:String(g('short')).trim(),detail:String(g('detail')).trim(),stage:mopt('stage',g('stage')),sev:mopt('sev',g('sev')),status:mopt('status',g('status'))||'Open',qa:String(g('qa')).trim(),field:String(g('field')).trim(),target:toISO(g('target')),actual:toISO(g('actual')),rem:String(g('rem')).trim(),part:parseList(g('part')),sto:parseList(g('sto'))};
+  if(!base.model||!base.agg||!base.short)return skip.push(n+': model, aggregate or complaint missing');
+  chs.forEach(c=>{const r={id:Date.now()+Math.random().toString(36).slice(2,8),...base,chassis:[c],photos:[]};if(r.status==='Closed'&&!r.actual)r.closedOn=today();const k=sig(r);if(seen.has(k))dup++;else{seen.add(k);out.push(r)}})});
+ if(!out.length)return upMsg('Nothing to upload. '+(skip.length?skip.slice(0,3).join('; '):'All rows already exist.'),1);
+ const old=data;data=rep?out:old.concat(out);if(!save()){data=old;return}
+ $('#m_up').value='';updCnt();render();refreshSub();
+ upMsg('Uploaded '+out.length+' complaint(s). '+(dup?dup+' duplicate(s) skipped. ':'')+(skip.length?skip.length+' row(s) skipped ('+skip.slice(0,3).join('; ')+(skip.length>3?'; \u2026':'')+').':'')+' See them in the Track Status tab.',0)};
+$('#m_tpl').onclick=async()=>{
+ if(typeof XLSX==='undefined')return toast('The Excel library could not load');
+ const ws=XLSX.utils.aoa_to_sheet([XH]);ws['!cols']=XH.map(h=>({wch:Math.min(42,Math.max(14,h.length))}));const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'PDI Complaints');
+ let dl=null;try{dl=window.claude?await claude.use('downloads'):null}catch(e){}
+ if(!dl)return toast('File download is not available in this view');
+ try{await dl.save({filename:'PDI_Complaint_Upload_Template.xlsx',data:XLSX.write(wb,{bookType:'xlsx',type:'array'})})}catch(e){if(!e||e.code!=='declined')toast('Could not save the file')}};
+// export and copy need the admin password
+['xl','copy'].forEach(id=>{const el=$('#'+id),h=el.onclick;el.onclick=e=>unlocked?h.call(el,e):askPw(()=>h.call(el,e))});
+applyS();setLockUI();mngUI();render();compact();
+updCnt();
+</script>
+</body>
+</html>
