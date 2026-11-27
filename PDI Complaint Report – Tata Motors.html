@@ -420,14 +420,40 @@ $('#copy').onclick=()=>{const txt=[XH,...xRows()].map(a=>a.map(v=>String(v).repl
   fb=()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){toast('Copy not available in this browser')}a.remove()};
  navigator.clipboard?navigator.clipboard.writeText(txt).then(ok,fb):fb()};
 $('#xl').onclick=async()=>{
- if(typeof XLSX==='undefined')return toast('The Excel library could not load – check the internet connection');
  const rows=xRows();if(!rows.length)return toast('No rows to export');
- const ws=XLSX.utils.aoa_to_sheet([XH,...rows]);ws['!cols']=XH.map((h,i)=>({wch:[7,8,10,8,9].includes(i)?14:Math.min(42,Math.max(14,h.length))}));ws['!autofilter']={ref:ws['!ref']};
- const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'PDI Complaints');
- const buf=XLSX.write(wb,{bookType:'xlsx',type:'array'});
- let dl=null;try{dl=window.claude?await claude.use('downloads'):null}catch(e){}
- if(!dl)return toast('File download is not available in this view – use “Copy table for Excel” instead');
- try{await dl.save({filename:'PDI_Complaint_Report_'+today()+'.xlsx',data:buf});toast('Excel file ready – '+rows.length+' complaint(s) exported')}catch(e){if(!e||e.code!=='declined')toast('Could not save the file ('+((e&&e.code)||'error')+')')}};
+ if(await saveFile('PDI_Complaint_Report_'+today()+'.xlsx',xlsxBytes([XH,...rows],'PDI Complaints'),XMIME))toast('Excel file exported \u2013 '+rows.length+' complaint(s)')};
+/* ---------- built-in .xlsx writer + file saving (works online and offline) ---------- */
+const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=crcT[(c^b[i])&255]^(c>>>8);return(c^0xFFFFFFFF)>>>0};
+function zipStore(files){const en=new TextEncoder(),parts=[],cd=[];let off=0;
+ files.forEach(f=>{const nm=en.encode(f.n),crc=crc32(f.d),sz=f.d.length,h=new DataView(new ArrayBuffer(30));
+  h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(12,0x21,true);h.setUint32(14,crc,true);h.setUint32(18,sz,true);h.setUint32(22,sz,true);h.setUint16(26,nm.length,true);
+  parts.push(new Uint8Array(h.buffer),nm,f.d);
+  const c=new DataView(new ArrayBuffer(46));c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint16(14,0x21,true);c.setUint32(16,crc,true);c.setUint32(20,sz,true);c.setUint32(24,sz,true);c.setUint16(28,nm.length,true);c.setUint32(42,off,true);
+  cd.push(new Uint8Array(c.buffer),nm);off+=30+nm.length+sz});
+ const cl=cd.reduce((n,x)=>n+x.length,0),e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cl,true);e.setUint32(16,off,true);
+ const all=[...parts,...cd,new Uint8Array(e.buffer)],out=new Uint8Array(all.reduce((n,x)=>n+x.length,0));let p=0;all.forEach(x=>{out.set(x,p);p+=x.length});return out}
+function xlsxBytes(aoa,sheet){const en=new TextEncoder(),X=v=>String(v).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ const col=i=>{let t='';i++;while(i>0){const m=(i-1)%26;t=String.fromCharCode(65+m)+t;i=Math.floor((i-1)/26)}return t};
+ const nc=aoa[0].length,rows=aoa.map((r,ri)=>'<row r="'+(ri+1)+'">'+r.map((v,ci)=>v===''||v==null?'':typeof v==='number'?'<c r="'+col(ci)+(ri+1)+'"><v>'+v+'</v></c>':'<c r="'+col(ci)+(ri+1)+'" t="inlineStr"'+(ri===0?' s="1"':'')+'><is><t xml:space="preserve">'+X(v)+'</t></is></c>').join('')+'</row>').join('');
+ const cols='<cols>'+aoa[0].map((h,i)=>'<col min="'+(i+1)+'" max="'+(i+1)+'" width="'+Math.min(42,Math.max(14,String(h).length+2))+'" customWidth="1"/>').join('')+'</cols>';
+ const NS='http://schemas.openxmlformats.org/spreadsheetml/2006/main',H='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n';
+ const f=(n,t)=>({n,d:en.encode(H+t)});
+ return zipStore([
+  f('[Content_Types].xml','<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>'),
+  f('_rels/.rels','<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'),
+  f('xl/workbook.xml','<workbook xmlns="'+NS+'" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="'+X(sheet)+'" sheetId="1" r:id="rId1"/></sheets></workbook>'),
+  f('xl/_rels/workbook.xml.rels','<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>'),
+  f('xl/styles.xml','<styleSheet xmlns="'+NS+'"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>'),
+  f('xl/worksheets/sheet1.xml','<worksheet xmlns="'+NS+'"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>'+cols+'<sheetData>'+rows+'</sheetData><autoFilter ref="A1:'+col(nc-1)+aoa.length+'"/></worksheet>')])}
+async function saveFile(name,bytes,mime){let dl=null;try{dl=window.claude?await claude.use('downloads'):null}catch(e){}
+ if(dl){try{await dl.save({filename:name,data:bytes});return true}catch(e){if(e&&e.code==='declined')return false}}
+ try{const u=URL.createObjectURL(new Blob([bytes],{type:mime||'application/octet-stream'})),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000);return true}catch(e){toast('Could not save the file');return false}}
+const XMIME='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+function csvRows(t){t=t.replace(/^\uFEFF/,'');const l=t.split('\n')[0],n=x=>(l.match(x)||[]).length,d=n(/\t/g)>n(/,/g)?'\t':n(/;/g)>n(/,/g)?';':',';
+ const a=[];let r=[],c='',q=false;for(let i=0;i<t.length;i++){const ch=t[i];if(q){if(ch==='"'){if(t[i+1]==='"'){c+='"';i++}else q=false}else c+=ch}else if(ch==='"')q=true;else if(ch===d){r.push(c);c=''}else if(ch==='\n'||ch==='\r'){if(ch==='\r'&&t[i+1]==='\n')i++;r.push(c);c='';a.push(r);r=[]}else c+=ch}
+ if(c!==''||r.length){r.push(c);a.push(r)}
+ const h=a.shift()||[];return a.filter(r=>r.some(x=>String(x).trim())).map(r=>{const o={};h.forEach((k,i)=>o[k]=r[i]==null?'':r[i]);return o})}
 /* ---------- v4: quantity, gallery, data upload, gated export ---------- */
 let QM={};
 const qkey=r=>[r.model||'',r.agg||'',(r.sub||'').trim().toLowerCase()].join('|');
@@ -460,9 +486,8 @@ const sig=r=>[r.date,(r.chassis||[]).join(','),(r.agg||'').toLowerCase(),(r.sub|
 $('#m_upgo').onclick=async()=>{
  if(!unlocked)return askPw();
  const f=$('#m_up').files[0];if(!f)return upMsg('Choose an Excel or CSV file first.',1);
- if(typeof XLSX==='undefined')return upMsg('The Excel library could not load \u2013 check the internet connection.',1);
  const rep=$('#m_rep').checked;if(rep&&!confirm('This deletes all existing complaints (including photos) and replaces them with the uploaded data. Continue?'))return;
- let rows;try{const wb=XLSX.read(await f.arrayBuffer(),{type:'array',cellDates:true});rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:'',raw:true})}catch(e){return upMsg('Could not read that file.',1)}
+ let rows;try{const isCsv=/\.csv$/i.test(f.name);if(isCsv||typeof XLSX==='undefined'){if(!isCsv)return upMsg('Reading .xlsx needs an internet connection. Save the sheet as CSV in Excel (File \u2192 Save As \u2192 CSV) and upload that file instead.',1);rows=csvRows(await f.text())}else{const wb=XLSX.read(await f.arrayBuffer(),{type:'array',cellDates:true});rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{defval:'',raw:true})}}catch(e){return upMsg('Could not read that file.',1)}
  if(!rows.length)return upMsg('No data rows found in the first sheet.',1);
  const idx={};Object.keys(rows[0]).forEach(h=>{const n=nk(h);for(const k in XK)if(XK[k].includes(n)&&!(k in idx))idx[k]=h});
  if(!idx.date||!idx.chassis)return upMsg('The columns \u201cComplaint Reported Date\u201d and \u201cAffected Chassis\u201d were not found. Use \u201cDownload template\u201d to see the format.',1);
@@ -477,12 +502,7 @@ $('#m_upgo').onclick=async()=>{
  const old=data;data=rep?out:old.concat(out);if(!save()){data=old;return}
  $('#m_up').value='';updCnt();render();refreshSub();
  upMsg('Uploaded '+out.length+' complaint(s). '+(dup?dup+' duplicate(s) skipped. ':'')+(skip.length?skip.length+' row(s) skipped ('+skip.slice(0,3).join('; ')+(skip.length>3?'; \u2026':'')+').':'')+' See them in the Track Status tab.',0)};
-$('#m_tpl').onclick=async()=>{
- if(typeof XLSX==='undefined')return toast('The Excel library could not load');
- const ws=XLSX.utils.aoa_to_sheet([XH]);ws['!cols']=XH.map(h=>({wch:Math.min(42,Math.max(14,h.length))}));const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,ws,'PDI Complaints');
- let dl=null;try{dl=window.claude?await claude.use('downloads'):null}catch(e){}
- if(!dl)return toast('File download is not available in this view');
- try{await dl.save({filename:'PDI_Complaint_Upload_Template.xlsx',data:XLSX.write(wb,{bookType:'xlsx',type:'array'})})}catch(e){if(!e||e.code!=='declined')toast('Could not save the file')}};
+$('#m_tpl').onclick=async()=>{if(await saveFile('PDI_Complaint_Upload_Template.xlsx',xlsxBytes([XH],'PDI Complaints'),XMIME))toast('Template downloaded')};
 // export and copy need the admin password
 ['xl','copy'].forEach(id=>{const el=$('#'+id),h=el.onclick;el.onclick=e=>unlocked?h.call(el,e):askPw(()=>h.call(el,e))});
 applyS();setLockUI();mngUI();render();compact();
